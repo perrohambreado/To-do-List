@@ -12,7 +12,6 @@ function closeTask() {
     li.remove();
 }
 
-// símbolo de "checked" cuando se hace clic en un elemento de la lista
 var list = document.querySelector('#list');
 var doneList = document.querySelector('#doneList');
 
@@ -33,13 +32,13 @@ doneList.addEventListener('click', toggleTask, false);
 
 function nElement() {
     var li = document.createElement("li");
-    li.className = "list-group-item"; // Añade clase de Bootstrap para estilo
+    li.className = "list-group-item";
     var div = document.createElement("div");
     var inputValue = document.getElementById("add").value;
     var t = document.createTextNode(inputValue);
 
     if (inputValue === '') {
-        alert("Please write something!");
+        alert("lotta things to do");
     } else {
         div.className = "liTexto";
         div.appendChild(t);
@@ -48,7 +47,7 @@ function nElement() {
         li.appendChild(button);
         document.getElementById("list").appendChild(li);
     }
-    document.getElementById("add").value = ""; // Clear input field after adding
+    document.getElementById("add").value = "";
 }
 
 document.getElementById("add").addEventListener("keypress", function(event) {
