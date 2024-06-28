@@ -28,17 +28,22 @@ ul {
 ul li {
     cursor: pointer;
     position: relative;
-    padding: 12px 8px 12px 40px;
+    padding: 12px 40px 12px 15px;
     background: #eeeeee71;
     font-size: 18px;
     transition: 0.3s;
     -webkit-user-select: none;
     user-select: none;
     border: 1px solid #ddd;
+    width: 500px;
     max-width: 100%;
 }
-.list-group-item d-flex justify-content-between align-items-center{
-    width: 50%;
+
+li {
+    word-wrap: break-word; 
+    white-space: normal; 
+    overflow-wrap: break-word; 
+    padding: 0 20px 0 0;
 }
 
 ul li:nth-child(odd) {
@@ -53,15 +58,6 @@ ul li.checked {
     background: #888888b7;
     color: #fff;
     text-decoration: line-through;
-}
-
-li{
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 500px;
-    max-width: 100%;
-    word-wrap: break-word;
-    white-space: pre-wrap;
 }
 
 ul li.checked::before {

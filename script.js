@@ -1,4 +1,3 @@
-// Crear un botón de cierre
 function createCloseButton() {
     var button = document.createElement("button");
     var txt = document.createTextNode("\u00D7");
@@ -8,36 +7,37 @@ function createCloseButton() {
     return button;
 }
 
-// Función para cerrar la tarea
 function closeTask() {
     var li = this.parentElement;
     li.remove();
 }
 
-// Añadir símbolo de "checked" cuando se hace clic en un elemento de la lista
+// símbolo de "checked" cuando se hace clic en un elemento de la lista
 var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
-    if (ev.target.tagName === 'LI') {
-        ev.target.classList.toggle('checked');
+    if (ev.target.tagName === 'LI' || ev.target.classList.contains('liTexto')) {
+        ev.target.closest('li').classList.toggle('checked');
     }
 }, false);
 
-// Crear un nuevo elemento de lista al hacer clic en el botón "Add"
 function nElement() {
     var li = document.createElement("li");
+    li.className = "list-group-item"; // Añade clase de Bootstrap para estilo
+    var div = document.createElement("div");
     var inputValue = document.getElementById("add").value;
     var t = document.createTextNode(inputValue);
-    li.appendChild(t);
 
     if (inputValue === '') {
-        alert("lotta things to do for u to not write anything");
+        alert("Please write something!");
     } else {
-        li.className = "";
-        document.getElementById("list").appendChild(li);
+        div.className = "liTexto";
+        div.appendChild(t);
+        li.appendChild(div);
         var button = createCloseButton();
         li.appendChild(button);
+        document.getElementById("list").appendChild(li);
     }
-    document.getElementById("add").value = "";
+    document.getElementById("add").value = ""; // Clear input field after adding
 }
 
 document.getElementById("add").addEventListener("keypress", function(event) {
