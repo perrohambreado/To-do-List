@@ -13,12 +13,23 @@ function closeTask() {
 }
 
 // símbolo de "checked" cuando se hace clic en un elemento de la lista
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
+var list = document.querySelector('#list');
+var doneList = document.querySelector('#doneList');
+
+function toggleTask(ev) {
     if (ev.target.tagName === 'LI' || ev.target.classList.contains('liTexto')) {
-        ev.target.closest('li').classList.toggle('checked');
+        var li = ev.target.closest('li');
+        li.classList.toggle('checked');
+        if (li.classList.contains('checked')) {
+            doneList.appendChild(li);
+        } else {
+            list.appendChild(li);
+        }
     }
-}, false);
+}
+
+list.addEventListener('click', toggleTask, false);
+doneList.addEventListener('click', toggleTask, false);
 
 function nElement() {
     var li = document.createElement("li");
